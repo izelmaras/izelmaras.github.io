@@ -13,10 +13,38 @@ h1 {
     color: black;
     font-family: helvetica;
     margin-top: 400px;
-    text-align: center;
+    text-align: left;
     font-size: 400;
 }
 
+h3 {
+    color: black;
+    font-family: helvetica;
+    text-align: center;
+    font-size: 200;
+}
+
 #blueP {
+    color: Red;
+    font-family: serif;
+    text-align: center;
+}
+
+#redP {
     color: Blue;
+    font-family: serif;
+    text-align: center;
+}
+
+#div1 {
+    max-width: 500;
+}
+    
+#div2 {
+    max-width: 500;
+}
+
+#button {
+    text-align: center;
+    vertical-align: middle;
 }
