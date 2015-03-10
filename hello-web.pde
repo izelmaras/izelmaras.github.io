@@ -59,8 +59,8 @@ void draw(){
             rect(i*width/nb, j*height/nb, width/nb, height/nb);
         }
     }
-    textSize(500);
-    text("AY O TECHNOLOGY", 600, 400);
+    textSize(200);
+    text("QUIK PASSPORT FOTO Jst PRESS SPACE = ", 20, 600);
 }
 
 void keyPressed(){
