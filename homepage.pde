@@ -24,26 +24,8 @@ void setup(){
  
 void draw(){
     background(0);
-    pushMatrix();
-    translate(width,0);
-    scale(-1,1);//mirror the video
-    ctx.drawImage(video, 0, 0, width, height); //video is defined outside processing code
-    popMatrix();
- 
-    //do something
-    img=get();
-    img.resize(nb,nb);
-    background(255);
-    noStroke();
-    for(int j=0; j<nb; j+=1){
-        for(int i=0; i<nb; i+=1){
-            fill(random(img.get(i, j)-20, img.get(i, j)), random(200,255));
-            rect(i*width/nb, j*height/nb, width/nb, height/nb);
-        }
-    }
-    textSize(50);
-    fill(255, 255, 255);
-    text("QUIK PASSPORT FOTO just PRESS SPACE = ", 140, 600);
+    rect(20, 20, 50, 100);
+    
 }
 
 void keyPressed(){
