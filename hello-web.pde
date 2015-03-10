@@ -1,69 +1,40 @@
-var video = document.createElement("video");
-video.setAttribute("style", "display:none;");
-video.setAttribute("id", "videoOutput");
-video.setAttribute("width", "500px");
-video.setAttribute("height", "660px");
-video.setAttribute("autoplay", "true");
-if(document.body!=null) document.body.appendChild(video);
- 
-function init() {
-    if (navigator.webkitGetUserMedia) {
-        navigator.webkitGetUserMedia({video:true}, gotStream, noStream);
- 
-        function gotStream(stream) {
-            video.src = webkitURL.createObjectURL(stream);
-            video.onerror = function () {
-                stream.stop();
-                streamError();
-            };
-        }
- 
-        function noStream() {
-            alert('No camera available.');
-        }
- 
-        function streamError() {
-            alert('Camera error.');
-        }
-    }
+PFont caption;
+  
+void setup() {
+  size(512,512);
 }
- 
-var ctx;
-PImage img;
-int nb=100;
- 
-void setup(){
-    size(1800,600);
-    ctx = externals.context;
-    ellipseMode(CORNER);
-    smooth();
-    init();
-}
- 
-void draw(){
-    background(0);
+  
+float factor;
+float factor_change_rate=800000.0;
+float factor_change_rate_2=200000.0;
+  
+void draw() {
+  background(0);
+  //noStroke();
+  stroke(0);
+  factor=3.0+(3.0*sin(frameCount/factor_change_rate));
+  float c=1.2; // size
+  ellipseMode(CENTER);
+  float x,y;
+  for (int n=0;n<800;n++) {
+    float off=float(frameCount)/20.0;
+    float nn=float(n);
+    float r=c*sqrt(nn);
+    float theta=off+(nn*degrees(factor));
+    x=nn*sin(theta);
+    y=nn*cos(theta);
+    float z=nn*sin((((float)frameCount)/factor_change_rate_2)*theta);
+    float luma=255-(nn/c);
+    if (n%1==0) {
     pushMatrix();
-    translate(width,0);
-    scale(-1,1);//mirror the video
-    ctx.drawImage(video, 0, 0, width, height); //video is defined outside processing code
+    translate(256,256);
+    translate(x,y,z);
+    fill(luma,0,255-luma);
+    float sz=30-(n/10);
+    ellipse(0,0,sz,sz);
     popMatrix();
- 
-    //do something
-    img=get();
-    img.resize(nb,nb);
-    background(255);
-    noStroke();
-    for(int j=0; j<nb; j+=1){
-        for(int i=0; i<nb; i+=1){
-            fill(random(img.get(i, j)-20, img.get(i, j)), random(200,255));
-            rect(i*width/nb, j*height/nb, width/nb, height/nb);
-        }
     }
-    textSize(50);
-    fill(255, 255, 255);
-    text("QUIK PASSPORT FOTO Jst PRESS SPACE = ", 140, 600);
-}
-
-void keyPressed(){
-    save("izel-######.png");
+      
+  }
+   
 }
