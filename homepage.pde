@@ -23,7 +23,7 @@ void setup(){
 }
  
 void draw(){
-    rect(0, 0, document.body.offsetWidth, document.body.offsetHeight);
+    text("Which one do you pick",document.body.offsetWidth/2, document.body.offsetHeight/2); 
     
 }
 
