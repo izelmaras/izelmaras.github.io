@@ -27,7 +27,7 @@ void draw(){
     background(255);
     fill(0);
     font = loadFont("helvetica.ttf"); 
-    textFont(font, 32);
+    textFont(font, 90);
     text("Which one do you pick",50, 50); 
     
 }
