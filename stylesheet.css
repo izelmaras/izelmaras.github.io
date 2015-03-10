@@ -10,7 +10,9 @@
 }
 
 h1 {
-    color: orange;
+    color: black;
+    font-family: helvetica;
+    margin-top: 400px;
     text-align: center;
-    font-size: 140;
+    font-size: 400;
 }
