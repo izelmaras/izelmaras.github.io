@@ -64,6 +64,5 @@ void draw(){
 }
 
 void keyPressed(){
-    fill(255,0,0);
-    rect(random(0,1800), random(0, 900), 20, 20);
+    saveFrame("izel-######.png");
 }
