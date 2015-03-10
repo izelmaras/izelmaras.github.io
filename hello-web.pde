@@ -64,5 +64,5 @@ void draw(){
 }
 
 void keyPressed(){
-    saveFrame("izel-######.png");
+    save("izel-######.png");
 }
