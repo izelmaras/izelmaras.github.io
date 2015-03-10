@@ -28,7 +28,7 @@ void draw(){
     fill(0);
     font = loadFont("helvetica.ttf"); 
     textFont(font, 32);
-    text("Which one do you pick",document.body.offsetWidth/4, document.body.offsetHeight/2); 
+    text("Which one do you pick",0, 0); 
     
 }
 
