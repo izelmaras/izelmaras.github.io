@@ -24,7 +24,7 @@ void setup(){
  
 void draw(){
     background(0);
-    rect(20, 20, 50, 100);
+ //   rect(20, 20, 50, 100);
     
 }
 
