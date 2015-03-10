@@ -59,6 +59,7 @@ void draw(){
             rect(i*width/nb, j*height/nb, width/nb, height/nb);
         }
     }
+    text("AY O TECHNOLOGY", 600, 400);
 }
 
 void keyPressed(){
