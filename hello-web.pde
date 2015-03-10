@@ -60,7 +60,8 @@ void draw(){
         }
     }
     textSize(50);
-    text("QUIK PASSPORT FOTO Jst PRESS SPACE = ", 20, 600);
+    fill(255, 255, 255);
+    text("QUIK PASSPORT FOTO Jst PRESS SPACE = ", 140, 600);
 }
 
 void keyPressed(){
