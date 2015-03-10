@@ -59,7 +59,7 @@ void draw(){
             rect(i*width/nb, j*height/nb, width/nb, height/nb);
         }
     }
-    textSize(200);
+    textSize(50);
     text("QUIK PASSPORT FOTO Jst PRESS SPACE = ", 20, 600);
 }
 
