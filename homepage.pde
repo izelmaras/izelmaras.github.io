@@ -15,7 +15,7 @@ PImage img;
 int nb=100;
  
 void setup(){
-    size(document.body.offsetWidth, document.body.offsetHeight);
+    size(document.body.offsetWidth-20, document.body.offsetHeight-20);
     ctx = externals.context;
     ellipseMode(CORNER);
     smooth();
