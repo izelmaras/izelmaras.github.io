@@ -33,7 +33,7 @@ PImage img;
 int nb=100;
  
 void setup(){
-    size(1800,900);
+    size(1800,600);
     ctx = externals.context;
     ellipseMode(CORNER);
     smooth();
