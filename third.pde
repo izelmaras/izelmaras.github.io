@@ -79,6 +79,7 @@ void draw(){
     textSize(50);
     fill(255);
     text("I know you like yourself", mouseX, mouseY);
+    ellipse(mouseX, mouseY, 20, 20);
      
  
 }
