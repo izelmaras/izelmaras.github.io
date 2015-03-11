@@ -33,7 +33,7 @@ PImage img;
 int nb=100;
  
 void setup(){
-    size(1800,600);
+    jProcessingJS(this, {fullscreen:true, mouseoverlay:true});
     ctx = externals.context;
     ellipseMode(CORNER);
     smooth();

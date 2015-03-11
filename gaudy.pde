@@ -1,66 +1,143 @@
-/* OpenProcessing Tweak of *@*http://www.openprocessing.org/sketch/20413*@* */
-/* !do not delete the line above, required for linking your tweak if you upload again */
-/* Apropritated and tweaked by Izel Maras */  
-
-int boxSize = 25;
-int windowSize = 400;
- 
-int startCounting=0;
- 
-float tick = 1;
-float w = width;
- 
-boolean altCol = true;
-boolean start = true;
-float randomColorScale1 = 1;
-float randomColorScale2 = 1;
-float randomColorScale3 = 1;
- 
- 
-void setup(){
-  jProcessingJS(this, {fullscreen:true, mouseoverlay:true});
-  noStroke();
-  //smooth();
+int nmark;
+int ntry;
+PImage load; 
+void setup( )
+{
+   jProcessingJS(this, {fullscreen:true, mouseoverlay:true});
+  smooth();
+    
+  reset();
+  ntry = 16;
+  load = loadImage("b.jpg");
 }
- 
-void draw(){
-  tick = frameCount/600.0 * PI;
-   for(int boxRadius_i = height*2;  boxRadius_i > 5; boxRadius_i -=boxSize-boxSize/2){
-     for(int windowRadius_i = 0;  windowRadius_i <= width; windowRadius_i +=windowSize){
-         
-      if(keyPressed && (key == 'c' || key == 'C')) {
-        randomColorScale1 = random(0.15,0.55);
-        randomColorScale2 = random(1.25,1.55);
-        randomColorScale3 = random(1.25,2.55);
-       } 
-         
-      if (key == 'c' || key == 'C') {
-          fill(
-            100*randomColorScale2 + randomColorScale2 * 100 * sin(tick*boxRadius_i/boxSize*randomColorScale1 ),
-            100*randomColorScale3 + randomColorScale2 * 100 * sin(tick*boxRadius_i/boxSize*randomColorScale1 ),
-            100*randomColorScale3 + randomColorScale3 * 100 * cos(tick*boxRadius_i/boxSize*randomColorScale1 )
-          );
-       start = false;  
-           
-      } else if(key == 'b' || key == 'B' | start) {
-        altCol = !altCol;
-        int col = altCol ? 0 : 1;
-        fill(
-        255 * col,
-        255 * col,
-        255 * col
-        );
-      }
-       
-      pushMatrix();
-      translate(windowRadius_i, height/2);
-      rotate(tick*boxRadius_i/40);
-      quad( -boxRadius_i/2, 0,
-             0, boxRadius_i/2,
-             boxRadius_i/2, 0,
-             0, -boxRadius_i/2
-          );       
-       popMatrix();
-   }
- } 
+  
+void draw( )
+{
+  img(load, this.width,this.height); 
+  int i;
+    
+  stroke(0,128);
+  HowBad b = new Round();
+  HowBad c = new Horiz();
+  HowBad d = new Short();
+  HowBad e = new Central();
+  for(i=0; i<10 && nmark<1000; i++ )
+  {
+    ++nmark;
+//    oneScratch();
+    makeMark( b, ntry, 1,1,this.width,this.height);
+    //makeMark( c, ntry, 1,this.width/2,this.width,this.height);
+    //makeMark( d, ntry, 201,1,this.width,this.height);
+    //makeMark( e, ntry, 201,201,this.width,this.height);
+  }
+    
+}
+  
+// ------------------------
+class HowBad
+{
+  float badness( Mark m, int w, int h )
+  {
+    return random(1);
+  }
+}
+// ------------------------
+class Horiz extends HowBad
+{
+  float badness( Mark m, int w, int h )
+  {
+    float dx = abs( m.x1-m.x2);
+    float dy = abs( m.y1-m.y2);
+    if( dx==0 )
+      dx = 0.1;
+    return dy/dx;
+  }
+}
+  
+// ------------------------
+class Short extends HowBad
+{
+  float badness( Mark m, int w, int h )
+  {
+    float d = dist(m.x1,m.y1,m.x2,m.y2);
+    return d;
+  }
+}
+// ------------------------
+class Central extends HowBad
+{
+  float badness( Mark m, int w, int h )
+  {
+    float xc = w/2;
+    float yc = h/2;
+    float d = dist(xc,yc,m.x1,m.y1)+dist(xc,yc,m.x2,m.y2);
+    return d;
+  }
+}
+  
+// ------------------------
+class Round extends HowBad
+{
+  float badness( Mark m, int w, int h )
+  {
+    float xc = w/2;
+    float yc = h/2;
+      float d1 = dist(xc,yc,m.x1,m.y1);
+      float d2 = dist(xc,yc,m.x2,m.y2);
+      float d3 = dist(xc,yc,(m.x1+m.x2)/2,(m.y1+m.y2)/2);
+      float mx = max(d1,d2);
+      mx = max( mx,d3 );
+      float v1 = abs(d1-d3)/mx;
+      float v2 = abs(d2-d3)/mx;
+      float v = max(v1,v2);
+    return v;
+  }
+}
+  
+// ------------------------
+class Mark
+{
+  float x1,y1,x2,y2;
+  float badness;
+    
+  Mark( HowBad b, int w, int h )
+  {
+    x1 = random(w);
+    x2 = random(w);
+    y1 = random(h);
+    y2 = random(h);
+    badness = b.badness( this,w,h );
+  }
+}
+  
+// ------------------------
+void makeMark( HowBad b, int tries, int x,int y,int w, int h )
+{
+  int i;
+  Mark m = new Mark(b,w,h);
+    
+  for( i=1; i<tries; i++)
+  {
+    Mark mtmp = new Mark(b,w,h);
+    if( mtmp.badness < m.badness )
+      m = mtmp;
+  }
+  line( x+m.x1,y+m.y1, x+m.x2, y+m.y2);
+}
+  
+// ------------------------
+  
+void keyPressed( )
+{
+  if( key==' ')
+    reset();
+}
+  
+void reset( )
+{
+  background(230,230,210);
+  nmark = 0;
+  ntry *= 4;
+  if( ntry >5000 )
+    ntry = 4;
 }
