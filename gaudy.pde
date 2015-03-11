@@ -3,10 +3,10 @@ int n=12,r=1,w=280,m=int(w*.2),f=6/*settings: n=steps r=border w=width,height m=
 Boolean vMode=true;//move vertex or texture
   
 void setup() {
-  size(w, w, P3D);
+  jProcessingJS(this, {fullscreen:true, mouseoverlay:true});
   colorMode(HSB, 2);
   noStroke();
-  t=loadImage("0.png");
+  t=loadImage("a10.jpg");
   t.resize(w-r*n*2, w-r*n*2);
   mouseX=w/2;  mouseY=w/2;
   setPe();
