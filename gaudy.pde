@@ -36,8 +36,8 @@ void draw(){
          
       if (key == 'c' || key == 'C') {
           fill(
-            10*randomColorScale2 + randomColorScale2 * 100 * sin(tick*boxRadius_i/boxSize*randomColorScale1 ),
-            10*randomColorScale3 + randomColorScale2 * 100 * sin(tick*boxRadius_i/boxSize*randomColorScale1 ),
+            100*randomColorScale2 + randomColorScale2 * 100 * sin(tick*boxRadius_i/boxSize*randomColorScale1 ),
+            100*randomColorScale3 + randomColorScale2 * 100 * sin(tick*boxRadius_i/boxSize*randomColorScale1 ),
             100*randomColorScale3 + randomColorScale3 * 100 * cos(tick*boxRadius_i/boxSize*randomColorScale1 )
           );
        start = false;  
