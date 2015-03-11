@@ -1,52 +1,48 @@
-
-#bum {
-    padding-top: 300px;
-    width: 1200px;
+html, body {
+	margin: 0;
+	padding: 0;
 }
 
-#temp {
-    font-family: helvetica;
-    font-size: 500;
+body {
+	
 }
 
-h1 {
-    color: black;
-    font-family: helvetica;
-    margin-top: 400px;
-    font-size: 400;
+img {
+	border: none;
+	vertical-align: bottom;
 }
 
-#bm {
-    color: black;
-    font-family: helvetica;
-    margin-top: 400px;
-    font-size: 400;
+div.container {
+	margin: 80px auto;
+	text-align: center;
 }
 
-h3 {
-    color: black;
-    font-family: helvetica;
-    font-size: 200;
+section {
+	margin: 80px 0 0 0;
 }
 
-#blueP {
-    color: Red;
-    font-family: serif;
+article {
+	margin: 0 0 32px 0;
 }
 
-#redP {
-    color: Blue;
-    font-family: serif;
+footer {
+	margin: 80px 0 0 0;
 }
 
-#div1 {
-    max-width: 500;
-}
-    
-#div2 {
-    max-width: 500;
+a {
+	text-decoration: none;
+	color: #000;
 }
 
-#button {
-    vertical-align: middle;
+a:hover {
+	color: #fff;
+	text-shadow: 0px 0px 3px #ff0088;
+}
+section#bio { 
+	width: 450px;
+	margin: 80px auto;
+}
+
+#gaudyBody {
+    background-color: pink;
 }
