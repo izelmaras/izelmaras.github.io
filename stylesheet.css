@@ -46,3 +46,21 @@ section#bio {
 #gaudyBody {
     background-color: pink;
 }
+
+#bm{
+    text-align: center
+}
+
+h1{
+    text-align: center;
+    font-size: 120px;
+    margin-top: 300px;
+    margin-bottom: 0px;
+}
+
+#redButton{
+    color: white;
+}
+#blueButton{
+    color: white;
+}
