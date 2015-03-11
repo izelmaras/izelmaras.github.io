@@ -1,3 +1,7 @@
+/* OpenProcessing Tweak of *@*http://www.openprocessing.org/sketch/20413*@* */
+/* !do not delete the line above, required for linking your tweak if you upload again */
+/* Apropritated and tweaked by Izel Maras */  
+
 int boxSize = 25;
 int windowSize = 400;
  
@@ -32,8 +36,8 @@ void draw(){
          
       if (key == 'c' || key == 'C') {
           fill(
-            100*randomColorScale2 + randomColorScale2 * 100 * sin(tick*boxRadius_i/boxSize*randomColorScale1 ),
-            100*randomColorScale3 + randomColorScale2 * 100 * sin(tick*boxRadius_i/boxSize*randomColorScale1 ),
+            10*randomColorScale2 + randomColorScale2 * 100 * sin(tick*boxRadius_i/boxSize*randomColorScale1 ),
+            10*randomColorScale3 + randomColorScale2 * 100 * sin(tick*boxRadius_i/boxSize*randomColorScale1 ),
             100*randomColorScale3 + randomColorScale3 * 100 * cos(tick*boxRadius_i/boxSize*randomColorScale1 )
           );
        start = false;  
