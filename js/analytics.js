@@ -228,7 +228,9 @@
                 'Mar',
                 'Apr',
                 'May',
-               
+                'Jun',
+                'Jul',
+                'Aug',
             ],
             crosshair: true
         },
@@ -268,11 +270,11 @@
         },
         series: [{
             name: 'On Campus Opportunity',
-            data: [200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200]
+            data: [200, 200, 200, 200, 200, 200, 200, 200, 200, 0, 0, 0]
 
         }, {
             name: 'Off-Campus OPT/CPT Opportunity',
-            data: [1120, 1120, 1120, 1120, 1120, 1120, 1120, 1120, 1120, 1120, 1120, 1120]
+            data: [1120, 1120, 1120, 1120, 1120, 1120, 1120, 1120, 1120, 1920, 1920, 0]
 
         },  ]
     });
@@ -323,10 +325,10 @@ $(function () {
                 y: -7200
             }, {
                 name: 'Max Personal Contribution',
-                y: -15840
+                y: -15720
             }, {
                 name: 'Extras',
-                y: -4800
+                y: -2900
             },{
                 name: 'Required Amount',
                 isIntermediateSum: true,
