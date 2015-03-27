@@ -327,7 +327,7 @@ $(function () {
                 name: 'Max Personal Contribution',
                 y: -15720
             }, {
-                name: 'Extras',
+                name: 'Budget Cuts',
                 y: -2900
             },{
                 name: 'Required Amount',
