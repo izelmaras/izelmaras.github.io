@@ -1,144 +1,111 @@
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-
-          <!-- Basic Page Needs
-          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-          <meta charset="utf-8">
-          <meta content="utf-8" http-equiv="encoding"> 
-          <a href="resume.pdf"></a>
-          <title>Anneler Günün Kutlu Olsun Annecigim!</title>
-          <meta name="description" content="">
-          <meta name="author" content="">
-          <script type="text/JavaScript" src="js/d3.js" charset="utf-8"></script>
-
-          <!-- Mobile Specific Metas
-          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-          <meta name="viewport" content="width=device-width, initial-scale=1,                   maximum-scale=1">
-
-          <!-- FONT
-          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-          <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
-
-          <!-- CSS
-          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-          <link rel="stylesheet" href="css/normalize.css">
-          <link rel="stylesheet" href="css/skeleton.css">
-          <link rel="stylesheet" href="css/custom.css">
-          <link rel="stylesheet" href="css/c3.css" >
-
-
-
-          <!-- Favicon
-          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-          <link rel="icon" type="image/png" href="images/favicon.png" />
-
-        <script type="text/JavaScript" src="js/d3.js" charset="utf-8"></script>
-        <script type="text/javascript" src="js/jquery.min.js"></script>	
-        <script type="text/javascript" src="js/parse-1.2.8.min.js"></script> 
-        <script type="text/JavaScript" src="js/connection.js"></script> 
-        <script type="text/JavaScript" src="js/questions.js"></script>
-        <script type="text/JavaScript" src="js/c3.min.js"></script>
-        
-        <script type="text/JavaScript" src="js/analytics.js"></script>
-        
-        <script type="text/JavaScript" src="js/cytoscape.min.js"></script>
-        <script type="text/JavaScript" src="js/network.js"></script>
-        <script src="http://code.highcharts.com/highcharts.js"></script>
-        <script src="http://code.highcharts.com/highcharts-more.js"></script>
-        <script src="http://code.highcharts.com/modules/exporting.js"></script>
-
-        
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <title>Curious Sound Object</title>
+  <meta name="author" content="Jake Rocheleau">
+  <link rel="shortcut icon" href="http://designshack.net/favicon.ico">
+  <link rel="icon" href="http://designshack.net/favicon.ico">
+  <link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
+<!--
+  <link rel="stylesheet" href="css/owl.theme.css">
+  <link rel="stylesheet" href="css/owl.carousel.css">
+-->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" language="javascript" src="js/parser.js"></script>
+<!--
+  <script src="js/jquery-1.9.1.min.js"></script>
+  <script src="js/owl.carousel.js"></script>
+-->
     
-        </head>
-        <body>
 
-          <!-- Primary Page Layout
-          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</head>
 
-        <div class="container">
+<body>
+    <div class="container">
+            <div class="header">
+                <h1 class="text-muted">Pinterest RSS Feed</h1>
+    </div>
+    
+    <div class="test-div" style="display: none;">
+            <ul class="test-list"></ul>      
+    </div>
+    <p class="slideNumber"></p>
+    <div id="slider">
+        <ul class="slides"></ul>
+    </div>
 
+    
+<script type="text/javascript">
+    
+    'use strict';
+            var universalSlideValue = 5;
 
-            <div class="row"></div>
-
-
-            <div class="row">
-                <div class="two columns"></div>  
-                <div class="nine columns"><h1></h1></div>
-               <!-- <div class="two columns"><a href="#" id="logout">Sign out</a></div> -->
-            </div>
-
-            <div class="row"></div>
-
-            <div class="row">
-                <div class="one column">&nbsp;</div>
-                <div class="ten columns">
-                    <h2 style="centered">Annecigim, Anneler Günün Kutlu Olsun!</h2>
-                    <h3 style="centered">Seni cok seviyorum.</h3>
-                    <div class="smile"><img src="smile.gif" width:500px; height:250px ></div>
-                    <h3 style="centered">                               </h3>
-                    <h3 style="centered">ve seni uzaklardan cok ozluyorum</h3>
-                    <div class="sad"><img src="sad.gif" width:700px; height:300px ></div>
-                    <h3 style="centered">                               </h3>
-                    <h3 style="centered">Seninle konustugumda huzur doluyorum.</h3>
-                    <div class="muzip"><img src="muzip.gif" width:700px; height:300px ></div>
-                    <h3 style="centered">                               </h3>
-                    <h3 style="centered">Seninle >7 gun Skype yapamayinca fena oluyorum,</h3>
-                    <div class="no"><img src="no.gif" width:700px; height:300px ></div>
-                    <h3 style="centered">                               </h3>
-                    <h3 style="centered">agliyorum,</h3>
-                    <div class="sad"><img src="sad.gif" width:700px; height:300px ></div>
-                    <h3 style="centered">                               </h3>
-                    <h3 style="centered">çünkü hayatimda olan herseyi sana anlatmak istiyorum.</h3>
-                    <div class="konus"><img src="konus.gif" width:700px; height:300px ></div>
-                    <h3 style="centered">                               </h3>
-                    <h3 style="centered">Çünkü sen en iyi annesin.</h3>
-                    <div class="tatli"><img src="tatli.gif" width:700px; height:300px ></div>
-                    <h3 style="centered">                               </h3>
-                    <h3 style="centered">4 gun icinde gorusmek uzere ^ _ ^ </h3>
-                    <div class="bye"><img src="bye.gif" width:700px; height:300px ></div>
+$(function(){
+    
+    
+    
+  
 
 
+//    //setInterval
+//    setInterval(function() {
+        
+    //animate margin-left
+  // running custom RSS functions
+  //parseRSS('http://curioussoundobjects.tumblr.com/rss', '#tumblr');
+  var temp = parseRSS('https://www.pinterest.com/nickolaspeter/build.rss/', '#pinterest');
+    console.log("Temp is "+parseRSS('https://www.pinterest.com/nickolaspeter/build.rss/', '#pinterest'));
+    
+        
 
-                    
+    
+});
+    
+    $(function() {
+    //settings for slider
+    var width = 720;
+    var animationSpeed = 500;
+    var pause = 1000;
+    var currentSlide = 1;
 
-                </div> 
-                <div class="one column"></div>
-            </div>
+    //cache DOM elements
+    var $slider = $('#slider');
+    var $slideContainer = $('.slides', $slider);
+    var $slides = $('#slider .slider');
+        console.log($slides.size());
+
+    var interval;
+
+    function startSlider() {
+        interval = setInterval(function() {
+            $slideContainer.animate({'margin-left': '-='+width}, animationSpeed, function() {
+                
+                if (++currentSlide === 9) {
+                    console.log("Slides are over");
+                    currentSlide = 1;
+                    $slideContainer.css('margin-left', 0);
+                }
+            });
+        }, pause);
+    }
+    function pauseSlider() {
+        clearInterval(interval);
+    }
+
+    $slideContainer
+        .on('mouseenter', pauseSlider)
+        .on('mouseleave', startSlider);
+
+    startSlider();
 
 
- 
-
- 
-
-
-                </div>    
+});
 
 
 
-                <div class="one column">        
-                </div>   
-
-            </div>    
-
-            <div class="row">
-                <div class="one column">&nbsp;</div>
-                <div class="ten columns" id="allRights">Copyright © 2014 &nbsp;&nbsp; | &nbsp;&nbsp; All Rights Reserved</div>
-                <div class="one column"></div>    
-            </div>    
-
-
-        </div>
-
-
-
-       
-        </script>
-
-
-        <!-- End Document
-          –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-              <div id="cy"></div>
-
-        </body>
-        </html>
+</script>
+    
+</body>
+</html>
