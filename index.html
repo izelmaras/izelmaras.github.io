@@ -1,111 +1,119 @@
 <!doctype html>
 <html lang="en-US">
 <head>
+    
   <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html">
+<!--  <meta http-equiv="Content-Type" content="text/html">-->
   <title>Curious Sound Object</title>
-  <meta name="author" content="Jake Rocheleau">
-  <link rel="shortcut icon" href="http://designshack.net/favicon.ico">
-  <link rel="icon" href="http://designshack.net/favicon.ico">
   <link rel="stylesheet" type="text/css" media="all" href="css/styles.css">
-<!--
-  <link rel="stylesheet" href="css/owl.theme.css">
-  <link rel="stylesheet" href="css/owl.carousel.css">
--->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript" language="javascript" src="js/parser.js"></script>
-<!--
-  <script src="js/jquery-1.9.1.min.js"></script>
-  <script src="js/owl.carousel.js"></script>
--->
-    
 
+    
+<!--  Slick Carousel -->
+  <script type="text/javascript" language="javascript" src="js/slick.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="slick/slick.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+ 
+<!--  /Slick Carousel -->
+    
 </head>
-
+    
 <body>
-    <div class="container">
-            <div class="header">
-                <h1 class="text-muted">Pinterest RSS Feed</h1>
+    <div class="wrapper"> 
+    <div class="my-slideshow">
+    </div>
     </div>
     
-    <div class="test-div" style="display: none;">
-            <ul class="test-list"></ul>      
+    <div class="data-div" style="display: none;">
+        <div class="data-list"></div> 
     </div>
-    <p class="slideNumber"></p>
-    <div id="slider">
-        <ul class="slides"></ul>
-    </div>
+    <div class="empty"></div>
+    <img id="logo" src="logo.png"></img>
 
-    
+
 <script type="text/javascript">
-    
-    'use strict';
-            var universalSlideValue = 5;
 
 $(function(){
-    
-    
-    
-  
-
-
-//    //setInterval
-//    setInterval(function() {
-        
-    //animate margin-left
-  // running custom RSS functions
-  //parseRSS('http://curioussoundobjects.tumblr.com/rss', '#tumblr');
-  var temp = parseRSS('https://www.pinterest.com/nickolaspeter/build.rss/', '#pinterest');
-    console.log("Temp is "+parseRSS('https://www.pinterest.com/nickolaspeter/build.rss/', '#pinterest'));
-    
-        
-
-    
+   parseRSS('https://www.pinterest.com/nickolaspeter/build.rss/', '#pinterest'); 
+     
 });
+
+function parseRSS(url, container) {
     
-    $(function() {
-    //settings for slider
-    var width = 720;
-    var animationSpeed = 500;
-    var pause = 1000;
-    var currentSlide = 1;
+  $.ajax({
+    //Ajax call to encode url
+    url: document.location.protocol + '//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=25&callback=?&q=' + encodeURIComponent(url),
+    dataType: 'json',
+    //Data includes the data we get in the json format
+    success: function(data) {
+        console.log(data.responseData.feed);
 
-    //cache DOM elements
-    var $slider = $('#slider');
-    var $slideContainer = $('.slides', $slider);
-    var $slides = $('#slider .slider');
-        console.log($slides.size());
+      $.each(data.responseData.feed.entries, function(key, value){
+        console.log("HEY");
+        var thehtml = value.content; 
+        $("<div/>").appendTo(".data-div .data-list").html(thehtml).addClass("imageDiv");
+        $("<p/>").appendTo(".data-div .data-list").html(value.title).addClass("title");
+        var onlyImg = $("div.data-list").find("img");
+        var onlyTitle = $("div.data-list").find("p");
+        $("<div/>").appendTo(".my-slideshow").html(onlyImg).addClass("class").css("display", "block");
+        $(".class:last").append(onlyTitle).css("font-size","160%").css("font-family","Futura").css("margin-top","60px"); 
+        $("<link/>").appendTo(".class:last").html(value.link); 
+      });
 
-    var interval;
+//           Slick Carousel        
+        $('.my-slideshow').slick({
+            lazyLoad: 'ondemand',
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            cssEase: 'linear',
+            fade: true,
+            centerMode: false,
+            adaptiveHeight: false,
+        });
+        
+//        $('.my-slideshow').css('margin-right', '0px').css('width', 'auto');
+//                $('.my-slideshow').css('margin-right', '0px').css('margin-left', '80px').css('width', 'auto');
 
-    function startSlider() {
-        interval = setInterval(function() {
-            $slideContainer.animate({'margin-left': '-='+width}, animationSpeed, function() {
-                
-                if (++currentSlide === 9) {
-                    console.log("Slides are over");
-                    currentSlide = 1;
-                    $slideContainer.css('margin-left', 0);
-                }
-            });
-        }, pause);
+//           Slick Carousel End
+        $('img').css('height', '300px').css('width', 'auto').css('margin-left', 'auto').css('margin-right', 'auto');
+        $('p').css('width', '100%').css('margin-left', '100px').css('margin-right', 'auto').css('font-size', '30px');
+        $('#logo').css('width', '80px').css('height', '80px').css('float', 'right').css('margin-right', '25px');
     }
-    function pauseSlider() {
-        clearInterval(interval);
-    }
-
-    $slideContainer
-        .on('mouseenter', pauseSlider)
-        .on('mouseleave', startSlider);
-
-    startSlider();
-
-
-});
+  });
+}
 
 
 
 </script>
+    
+<style>
+    .wrapper{
+          margin:auto; 
+          margin-top: 150px;
+          margin-left: auto+90px;
+          text-allign: center;
+          width:500px;
+          height: 400px;
+    }
+    
+    .empty{
+        width: 100%;
+        height:30px;
+    }
+    
+    
+    
+
+
+</style>
+    
     
 </body>
 </html>
