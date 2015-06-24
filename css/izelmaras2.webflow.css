@@ -271,6 +271,7 @@ p {
   text-align: center;
 }
 .section-title {
+  height: 160%;
   margin-top: 0px;
   font-family: Lato, sans-serif;
   color: #363636;
@@ -944,6 +945,9 @@ p {
   font-weight: 300;
   text-decoration: underline;
 }
+.links.this {
+  padding-top: 0px;
+}
 .full-scale {
   display: block;
   overflow-x: visible;
@@ -1245,6 +1249,26 @@ p {
 .nav-link2 {
   font-family: Lato, sans-serif;
   font-weight: 300;
+}
+.image-col {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.about {
+  margin-bottom: 0px;
+}
+.main-logo {
+  margin-top: -2px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-left: 0px;
+  float: none;
+  clear: none;
+  text-align: left;
+}
+.important-text {
+  font-weight: 300;
+  text-decoration: underline;
 }
 html.w-mod-js *[data-ix="display-none-contact-block"] {
   display: none;
